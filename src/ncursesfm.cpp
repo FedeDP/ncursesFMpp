@@ -21,12 +21,13 @@
 
 NcursesFM::NcursesFM() {
     modules.emplace_back(new NcursesUI);
+    
     pollfd fgetch = { modules.back()->getFd(), POLLIN };
     fds.push_back(fgetch);
 }
 
 NcursesFM::~NcursesFM() {
-
+    
 }
 
 void NcursesFM::loop() {
@@ -40,9 +41,11 @@ void NcursesFM::loop() {
             quit = true;
         }
         
-        for (int i = 0; i < fds.size(); i++) {
+        for (int i = 0; i < fds.size() && r > 0; i++) {
             if (fds.at(i).revents & POLLIN) {
-                modules.at(i)->recv();
+                if (modules.at(i)->recv() == -1) {
+                    quit = true;
+                }
                 r--;
             }
         }

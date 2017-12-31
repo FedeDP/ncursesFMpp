@@ -18,7 +18,6 @@ private:
     std::vector<std::unique_ptr<NcursesTab>> tabs;
     NcursesModTab modTab;
     NCursesMenu *activeWin, *lastActive; // last win active before changing modality
-//     Window sysWin;
 
 };
 

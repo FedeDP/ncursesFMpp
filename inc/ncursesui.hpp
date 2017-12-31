@@ -3,11 +3,11 @@
 
 #include <ncursestab.hpp>
 #include <ncursesmodtab.hpp>
-#include "log.hpp"
 #include <module.hpp>
 #include <cursesapp.h>
 
-class NcursesUI : public Module, public NCursesApplication {
+class NcursesUI : public Module, public NCursesApplication 
+{
 public:
     NcursesUI();
     ~NcursesUI();

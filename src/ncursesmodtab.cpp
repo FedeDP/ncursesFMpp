@@ -1,7 +1,7 @@
-#include "ncursesmodtab.hpp"
+#include <ncursesmodtab.hpp>
 
 NcursesModTab::NcursesModTab()
-: NCursesMenu(3, cols(), lines() - 3, 0)
+: NCursesMenu(3, cols(), lines() - 4, 0)
 {
     modNames.reserve(6);
     modNames.push_back(new NCursesMenuItem("1. Browse"));

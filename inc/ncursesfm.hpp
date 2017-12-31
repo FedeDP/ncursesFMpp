@@ -3,7 +3,8 @@
 
 #include <poll.h>
 #include <memory>
-#include "ncursesui.hpp"
+#include <module.hpp>
+#include <vector>
 
 class NcursesFM
 {

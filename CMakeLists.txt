@@ -5,6 +5,9 @@ cmake_minimum_required (VERSION 2.8.11)
 
 project (ncursesfm++)
 
+set(CMAKE_BUILD_TYPE Debug)
+# set(CMAKE_BUILD_TYPE Release)
+
 include_directories(inc src)
 set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 

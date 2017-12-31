@@ -1,7 +1,7 @@
-#include "ncursestab.hpp"
+#include <ncursestab.hpp>
 
 NcursesTab::NcursesTab(std::string t, int starty, int startx)
- : NCursesMenu(lines() - 3, cols() / 2, starty, startx)
+ : NCursesMenu(lines() - 4, cols() / 2, starty, startx)
 {
     itemList.push_back(new NCursesMenuItem("top"));
     itemList.push_back(new NCursesMenuItem("kek"));
@@ -9,7 +9,7 @@ NcursesTab::NcursesTab(std::string t, int starty, int startx)
     itemList.push_back(new NCursesMenuItem("kektop"));
     itemList.push_back(new NCursesMenuItem());
     
-    set_format(lines() - 5, 1); // 2 dimension of borders, 3 dimension of modtab win
+    set_format(lines() - 2 - 4, 1); // 2 dimension of borders, 4 dimension of modtab win + syswin
     InitMenu(&itemList.front(), TRUE, TRUE);
     frame(t.c_str(), "FM");
     

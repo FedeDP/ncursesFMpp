@@ -9,7 +9,8 @@
 #include <iomanip>
 #include <ctime>
 
-class Log {
+class Log 
+{
 public:
     static Log& getInstance() {
         static Log instance;

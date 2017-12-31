@@ -1,28 +1,19 @@
 #include <ncursesmodtab.hpp>
 
 NcursesModTab::NcursesModTab()
-: NCursesMenu(3, cols(), lines() - 4, 0)
+ : MyNcursesMenu("Modalities", "Choose", "*", 3, cols(), lines() - 4, 0)
 {
-    modNames.reserve(6);
-    modNames.push_back(new NCursesMenuItem("1. Browse"));
-    modNames.push_back(new NCursesMenuItem("2. FM"));
-    modNames.push_back(new NCursesMenuItem("3. Places"));
-    modNames.push_back(new NCursesMenuItem("4. Stats"));
-    modNames.push_back(new NCursesMenuItem("5. Notifications"));
-    modNames.push_back(new NCursesMenuItem());
+    itemList.reserve(9);
+    itemList.push_back(new NCursesMenuItem("1. Browse"));
+    itemList.push_back(new NCursesMenuItem("2. FM"));
+    itemList.push_back(new NCursesMenuItem("3. Places"));
+    itemList.push_back(new NCursesMenuItem("4. Stats"));
+    itemList.push_back(new NCursesMenuItem("5. Selected"));
+    itemList.push_back(new NCursesMenuItem("6. Search"));
+    itemList.push_back(new NCursesMenuItem("7. Helper"));
+    itemList.push_back(new NCursesMenuItem("8. Notifications"));
+    itemList.push_back(new NCursesMenuItem());
 
     set_format(1, cols() - 2);
-    InitMenu(&modNames.front(), TRUE, TRUE);
-    frame("Modalities", "Choose");
-
-    set_mark("*");
-    curs_set(0);
-
-    post();
-    show();
-    refresh();
-}
-
-int NcursesModTab::virtualize(int c) {
-    return driver(NCursesMenu::virtualize(c));
+    MyNcursesMenu::init();
 }

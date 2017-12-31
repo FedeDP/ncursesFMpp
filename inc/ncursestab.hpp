@@ -8,8 +8,7 @@
 class NcursesTab : public NCursesMenu
 {
 public:
-    NcursesTab(const std::vector<std::string> &in, std::string t, int starty = 0, int startx = 0);
-    ~NcursesTab();
+    NcursesTab(std::string t, int starty = 0, int startx = 0);
     int virtualize(int c);
     
 private:

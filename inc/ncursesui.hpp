@@ -15,10 +15,9 @@ public:
     int run();
     
 private:
-    std::vector<NcursesTab> tabs;
+    std::vector<std::unique_ptr<NcursesTab>> tabs;
     NcursesModTab modTab;
-    std::vector<std::string> list;
-    NCursesMenu *activeWin;
+    NCursesMenu *activeWin, *lastActive; // last win active before changing modality
 //     Window sysWin;
 
 };

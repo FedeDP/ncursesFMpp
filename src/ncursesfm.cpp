@@ -1,6 +1,4 @@
 #include <ncursesfm.hpp>
-#include <string.h>
-#include <log.hpp>
 #include <ncursesui.hpp>
 #include <sysmodule.hpp>
 
@@ -25,7 +23,7 @@ void NcursesFM::loop() {
             if (errno == EINTR) {
                 continue;
             }
-            Log::getInstance().Error(strerror(errno));
+            Log::getInstance().Error(std::strerror(errno));
             quit = true;
         }
         

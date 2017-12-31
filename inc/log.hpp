@@ -8,6 +8,8 @@
 #include <pwd.h>
 #include <iomanip>
 #include <ctime>
+#include <vector>
+#include <cstring>
 
 class Log 
 {

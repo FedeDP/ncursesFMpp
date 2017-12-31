@@ -2,8 +2,7 @@
 #define NCURSESSYSTAB_H
 
 #include <cursesm.h>
-#include <vector>
-#include <string>
+#include <log.hpp>
 
 class NcursesSysTab : public NCursesMenu
 {

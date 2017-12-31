@@ -4,7 +4,6 @@
 #include <poll.h>
 #include <memory>
 #include <module.hpp>
-#include <vector>
 
 class NcursesFM
 {

@@ -1,21 +1,54 @@
 #include <ncursestab.hpp>
+#include <experimental/filesystem>
 
-NcursesTab::NcursesTab(std::string t, int starty, int startx)
- : MyNcursesMenu(t, "FM", "-> ", lines() - 4, cols() / 2, starty, startx)
-{
-    itemList.push_back(new NCursesMenuItem("top"));
-    itemList.push_back(new NCursesMenuItem("kek"));
-    itemList.push_back(new NCursesMenuItem("topkek"));
-    itemList.push_back(new NCursesMenuItem("kektop"));
-    itemList.push_back(new NCursesMenuItem());
-    
+using namespace std::experimental::filesystem;
+
+NcursesTab::NcursesTab(int starty, int startx, bool active)
+    : MyNcursesMenu(current_path().string(), "FM", "-> ", lines() - 4, cols() / 2, starty, startx, active)
+{    
     set_format(lines() - 2 - 4, 1); // 2 dimension of borders, 4 dimension of modtab win + syswin
+    getFileList();
     MyNcursesMenu::init();
+    
+    mapFunc.emplace(10,  std::bind(&NcursesTab::changeDir, this));
 }
 
 int NcursesTab::process(int c) {
-//     if (activeMod.getCb(c) != nullptr) {
-//         return activeMod.getCb(c);
-//     }    
-    return MyNcursesMenu::process(c);
+    try {
+        return mapFunc.at(c)();
+    } catch (const std::out_of_range& oor) {
+        return MyNcursesMenu::process(c);
+    }
+}
+
+void NcursesTab::getFileList() {
+    list.clear();
+    itemList.clear();
+    
+    for (auto& p : directory_iterator(current_path())) {
+        std::string str;
+        try {
+            str = p.path().filename().string().substr(0, cols() / 2 - 3);
+        } catch (const std::out_of_range& oor) {
+            str = p.path().filename().string();
+        }
+        list.push_back(str);
+    }
+    
+    // FIXME: why is this needed? Can't we directly use loop above?
+    // ncurses prints weird things...
+    for (auto& s : list) {
+        itemList.push_back(new NCursesMenuItem(s.c_str()));
+    }
+    itemList.push_back(new NCursesMenuItem());
+}
+
+int NcursesTab::changeDir() {
+    // FIXME: why does it print only first N items (where N is number of previous folder items)
+    if (is_directory(current_item()->name())) {
+        current_path(current_item()->name());
+        getFileList();
+        updateItems(current_path().string());
+    }
+    return 0;
 }

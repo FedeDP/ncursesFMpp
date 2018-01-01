@@ -27,6 +27,7 @@ target_include_directories(ncursesfm++
 
 target_link_libraries(ncursesfm++
 	${NCURSESW_LIBRARIES}
-	${CMAKE_THREAD_LIBS_INIT})
+	${CMAKE_THREAD_LIBS_INIT}
+	stdc++fs)
 
 set_property(TARGET ncursesfm++ PROPERTY CXX_STANDARD 17)

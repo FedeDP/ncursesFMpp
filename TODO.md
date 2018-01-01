@@ -1,3 +1,8 @@
+## UI FIXES (NcursesTab)
+- [ ] Correctly print windows
+- [ ] Colors like ls (for now it seems not possible)
+- [ ] 
+
 ## Module class
 - [ ] InotifyModule (each FmTab has one)
 - [ ] UiModule (getch)
@@ -9,17 +14,9 @@
 
 - [x] Interfaccia generica: getFd(), recv(), init(), destroy();
 
-## Modality class
-- [ ] Hashmap { pressedButton, Func }
-- [ ] implementazione di tutte le funzioni per quella modality
-- [ ] NcursesUI ha una hashmap di default con le funzioni condivise (eg: TAB per switchare modality e ESC per uscire)
-
-## FmTab extends Window
+## NcursesTab
 - [ ] Modality &currentMod
 - [ ] inotifyModule mod;
 
-## Window class
-- [ ] getRealCols/Rows
-- [ ] wborder
-- [ ] draw()
-- [ ] update()
+## Modality class
+- [ ] Hashmap { pressedButton, Func }

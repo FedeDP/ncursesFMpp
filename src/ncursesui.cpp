@@ -23,14 +23,14 @@ int NcursesUI::recv() {
     int c = activeWin->getch();
     switch (c) {
         case 9: // tab to switch!
-            activeWin->setEnabled(false);
+            activeWin->setActive(false);
             if (activeWin == &modTab) {
                 activeWin = lastActive;
-                activeWin->setEnabled(true);
+                activeWin->setActive(true);
             } else {
                 lastActive = activeWin;
                 activeWin = &modTab;
-                activeWin->setEnabled(true);
+                activeWin->setActive(true);
             }
             break;
         case 27: /* ESC to exit */
@@ -39,9 +39,9 @@ int NcursesUI::recv() {
         case KEY_LEFT: // left to switch tab only if we're not choosing modality
             if (activeWin != &modTab) {
                 if (activeWin != tabs.front().get()) {
-                    activeWin->setEnabled(false);
+                    activeWin->setActive(false);
                     activeWin = tabs.front().get();
-                    activeWin->setEnabled(true);
+                    activeWin->setActive(true);
                 } 
                 break;
             }
@@ -49,9 +49,9 @@ int NcursesUI::recv() {
         case KEY_RIGHT: // right to switch tab only if we're not choosing modality
             if (activeWin != &modTab) {
                 if (activeWin != tabs.back().get() && tabs.size() == 2) {
-                    activeWin->setEnabled(false);
+                    activeWin->setActive(false);
                     activeWin = tabs.back().get();
-                    activeWin->setEnabled(true);
+                    activeWin->setActive(true);
                 } 
                 break;
             }
@@ -67,10 +67,9 @@ int NcursesUI::recv() {
 int NcursesUI::run() {
     //     init_modalities(); // to be passed to tabs!
     
-    tabs.emplace_back(new NcursesTab("Tab1"));
-    tabs.emplace_back(new NcursesTab("Tab2", 0, COLS / 2));
+    tabs.emplace_back(new NcursesTab);
+    tabs.emplace_back(new NcursesTab(0, COLS / 2, false));
     
     activeWin = tabs.front().get();
-    activeWin->setEnabled(true);
     return 0; 
 }

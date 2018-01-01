@@ -7,19 +7,22 @@
 class MyNcursesMenu : public NCursesMenu
 {
 public:
-    MyNcursesMenu(std::string title, std::string label, std::string mark, 
-                  int nlines, int ncols, int starty = 0, int startx = 0);
+    MyNcursesMenu(std::string title, std::string label, std::string mark,
+                  int nlines, int ncols, int starty = 0, int startx = 0, bool active = false);
     void init();
     virtual int process(int c);
-    virtual void setEnabled(bool enabled);
+    virtual void setActive(bool active);
     
 protected:
+    void updateItems(std::string title = std::string());
+    
     std::vector<NCursesMenuItem *> itemList;
     
 private:
     std::string title;
     std::string label;
     std::string mark;
+    bool active;
 };
 
 #endif // MYNCURSESMENU_H

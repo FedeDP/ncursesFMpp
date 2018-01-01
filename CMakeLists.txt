@@ -21,12 +21,16 @@ find_package(Threads)
 set(CURSES_NEED_NCURSES TRUE)
 find_package(Ncursesw REQUIRED)
 
+find_package(Udev REQUIRED)
+
 target_include_directories(ncursesfm++
 	PRIVATE ${NCURSESW_INCLUDE_DIRS}
+	PRIVATE ${UDEV_INCLUDE_DIR}
 	PUBLIC include)
 
 target_link_libraries(ncursesfm++
 	${NCURSESW_LIBRARIES}
+	${UDEV_LIBRARY}
 	${CMAKE_THREAD_LIBS_INIT}
 	stdc++fs)
 

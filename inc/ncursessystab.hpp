@@ -10,7 +10,7 @@ public:
     NcursesSysTab();
     int virtualize(int c);
 
-private:
+private:    
     std::vector<NCursesMenuItem *> modNames;
 };
 

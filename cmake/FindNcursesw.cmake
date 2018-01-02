@@ -1,4 +1,4 @@
-pkg_check_modules (NCURSESW QUIET ncursesw ncurses++w menuw panelw)
+pkg_check_modules (NCURSESW REQUIRED ncursesw ncurses++w menuw panelw)
 set (required_vars NCURSESW_LIBRARIES)
 
 include (FindPackageHandleStandardArgs)

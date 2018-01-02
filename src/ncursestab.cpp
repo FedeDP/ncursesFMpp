@@ -44,7 +44,6 @@ void NcursesTab::getFileList() {
 }
 
 int NcursesTab::changeDir() {
-    // FIXME: why does it print only first N items (where N is number of previous folder items)
     if (is_directory(current_item()->name())) {
         current_path(current_item()->name());
         getFileList();

@@ -1,6 +1,9 @@
 #ifndef LOG_H
 #define LOG_H
 
+// gettext compliance
+#define _(str) (str)
+
 #include <mutex>
 #include <fstream>
 #include <iostream>
@@ -10,6 +13,7 @@
 #include <ctime>
 #include <vector>
 #include <cstring>
+#include <memory>
 
 class Log 
 {

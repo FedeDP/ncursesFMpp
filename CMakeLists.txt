@@ -25,13 +25,13 @@ find_package(Udev REQUIRED)
 
 target_include_directories(ncursesfm++
 	PRIVATE ${NCURSESW_INCLUDE_DIRS}
-	PRIVATE ${UDEV_INCLUDE_DIR}
+	PRIVATE ${UDEV_INCLUDE_DIRS}
 	PUBLIC include)
 
 target_link_libraries(ncursesfm++
 	${NCURSESW_LIBRARIES}
-	${UDEV_LIBRARY}
+	${UDEV_LIBRARIES}
 	${CMAKE_THREAD_LIBS_INIT}
 	stdc++fs)
 
-set_property(TARGET ncursesfm++ PROPERTY CXX_STANDARD 17)
+set_property(TARGET ncursesfm++ PROPERTY CXX_STANDARD 14)

@@ -10,7 +10,7 @@ MyNcursesMenu::MyNcursesMenu(std::string title, std::string label, std::string m
 }
 
 void MyNcursesMenu::init() {
-    InitMenu(&itemList.front(), TRUE, TRUE);
+    InitMenu(itemList.data(), TRUE, TRUE);
     
     setActive(active);
     set_mark(mark.c_str());
@@ -30,9 +30,7 @@ void MyNcursesMenu::setActive(bool active) {
     if (active) {
         CUR_attron(COLOR_PAIR(3));
     }
-
     frame(title.c_str(), label.c_str());
-    
     if (active) {
         CUR_attroff(COLOR_PAIR(3));
     }
@@ -43,8 +41,10 @@ void MyNcursesMenu::updateItems(std::string title) {
         this->title = title;
     }
     unpost();
-    setItems(&itemList.front());
-    setActive(active);
+    setItems(itemList.data());
+    if (!title.empty()) {
+        setActive(active);
+    }
     post();
 }
 

@@ -3,11 +3,11 @@
 #include <sysmodule.hpp>
 
 NcursesFM::NcursesFM() {
-    modules.emplace_back(new NcursesUI);
+    modules.push_back(std::make_unique<NcursesUI>());
     pollfd fgetch = { modules.back()->getFd(), POLLIN };
     fds.push_back(fgetch);
     
-    modules.emplace_back(new SysModule);
+    modules.push_back(std::make_unique<SysModule>());
     fgetch = { modules.back()->getFd(), POLLIN };
     fds.push_back(fgetch);
 }

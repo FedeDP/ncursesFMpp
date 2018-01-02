@@ -67,8 +67,8 @@ int NcursesUI::recv() {
 int NcursesUI::run() {
     //     init_modalities(); // to be passed to tabs!
     
-    tabs.emplace_back(new NcursesTab);
-    tabs.emplace_back(new NcursesTab(0, COLS / 2, false));
+    tabs.push_back(std::make_unique<NcursesTab>());
+    tabs.push_back(std::make_unique<NcursesTab>(0, COLS / 2, false));
     
     activeWin = tabs.front().get();
     return 0; 

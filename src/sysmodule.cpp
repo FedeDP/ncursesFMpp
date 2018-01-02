@@ -31,6 +31,7 @@ int SysModule::recv() {
     uint64_t t;
     read(getFd(), &t, sizeof(uint64_t));
     
+    sysTab.CUR_clrtoeol();
     for (int i = 0; i < sysinfoLayout.size(); i++) { 
         switch (tolower(sysinfoLayout[i])) {
         case 't':
@@ -57,9 +58,7 @@ void SysModule::updateTimeDate(int where) {
     auto tm = *std::localtime(&t);
     date << std::put_time(&tm, "%a %e %b %Y %k:%M");
     int x = checkSysinfoWhere(where, date.str().size());
-    if (x != -1) {
-        sysTab.printw(0, x, "%.*s", COLS, date.str().c_str());
-    }
+    sysTab.printw(0, x, "%.*s", COLS, date.str().c_str());
 }
 
 void SysModule::updateSysInfo(int where) {
@@ -83,9 +82,7 @@ void SysModule::updateSysInfo(int where) {
     sprintf(sys_str + len, "procs: %d, ram usage: %.1fMb/%.1fMb", si.procs, used_ram, si.totalram / megabyte);
     len = strlen(sys_str);
     int x = checkSysinfoWhere(where, len);
-    if (x != -1) {
-        sysTab.printw(0, x, "%.*s", COLS, sys_str);
-    }
+    sysTab.printw(0, x, "%.*s", COLS, sys_str);
 }
 
 void SysModule::updateBatt(int where) {
@@ -95,7 +92,7 @@ void SysModule::updateBatt(int where) {
     
     percs.reserve(battPaths.size());
     dev = udev_device_new_from_syspath(udev, acPath.c_str());
-    if (dev) {
+    if (dev && udev_device_get_property_value(dev, "POWER_SUPPLY_ONLINE")) {
         online = strtol(udev_device_get_property_value(dev, "POWER_SUPPLY_ONLINE"), NULL, 10);
         udev_device_unref(dev);
         if (!online) {
@@ -117,56 +114,47 @@ void SysModule::updateBatt(int where) {
 
 void SysModule::printBatt(int online, std::vector<int>& percs, int where) {
     std::vector<std::string> battStr;
-    int x;
+    int x, i = 0, len = 0;
     
     switch (online) {
-        case -1:
-            /* built without libudev support. No info available. */
-            x = checkSysinfoWhere(where, strlen("fail"));
-            if (x != -1) {
-                sysTab.printw(0, x, "%.*s", COLS, "fail");
-            }
-            break;
         case 1:
             /* ac connected */
-            x = checkSysinfoWhere(where, strlen("Connected to AC"));
-            if (x != -1) {
-                sysTab.printw(0, x, "%.*s", COLS, "Connected to AC");
-            }
+            x = checkSysinfoWhere(where, strlen(_("Connected to AC")));
+            sysTab.printw(0, x, "%.*s", COLS, _("Connected to AC"));
             break;
         case 0:
-            battStr.reserve(battPaths.size());
             /* on battery */
             // to workaround an issue if sysinfo layout set
             // battery mon on center, and we have more than one battery.
             // we must check total batteries strings length before, to print it centered.
-            int i = 0;
-            int len = 0;
+            battStr.reserve(battNames.size());
             for (auto& n : battNames) {
-                battStr.emplace_back(n);
-                if (percs.at(i) != -1) {
-                    battStr.back().append("%d%%%%", percs.at(i));
-                    len += battStr.back().length();     /* -2 to delete spaces derived from %%%% */
+                if (i > 1 && i < battNames.size() - 1) {
+                    battStr.back().append(",");
+                    len++;
                 }
-                len++;  /* if there's another bat, at least divide the two batteries by 1 space */
+                std::stringstream s;
+                s << n << ":" << percs.at(i) << "%";
+                battStr.emplace_back(s.str());
+                len += battStr.back().size();
                 i++;
             }
             x = checkSysinfoWhere(where, len);
             i = 0;
-            if (x != -1) {
-                for (auto &s : battStr) {
-                    if (percs.at(i) != -1) {
-                        if (percs.at(i) <= 15) {
-                            sysTab.CUR_attron(COLOR_PAIR(5));
-                        }
-                        sysTab.printw(0, x, "%s", s.c_str());
-                        if (percs.at(i) <= 15) {
-                            sysTab.CUR_attron(COLOR_PAIR(5));
-                        }
-                    }
-                    i++;
+            for (auto &s : battStr) {
+                if (percs.at(i) <= 15) {
+                    sysTab.CUR_attron(COLOR_PAIR(5));
                 }
+                sysTab.printw(0, x, "%s", s.c_str());
+                if (percs.at(i) <= 15) {
+                    sysTab.CUR_attroff(COLOR_PAIR(5));
+                }
+                i++;
             }
+            break;
+        default:
+            x = checkSysinfoWhere(where, strlen(_("AC error")));
+            sysTab.printw(0, x, "%.*s", COLS, _("AC error"));
             break;
     }
 }
@@ -174,16 +162,7 @@ void SysModule::printBatt(int online, std::vector<int>& percs, int where) {
 
 
 int SysModule::checkSysinfoWhere(int where, int len) {
-    switch (where) {
-        case 0:
-            return 1;
-        case 1:
-            return (COLS - len) / 2;
-        case 2:
-            return COLS - len;
-        default:
-            return -1;
-    }
+    return where ? where * (sysTab.cols() - len) / 2 : 1;
 }
 
 /*

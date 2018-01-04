@@ -1,7 +1,7 @@
 #include <ncursesmodtab.hpp>
 
 NcursesModTab::NcursesModTab()
- : MyNcursesMenu("Modalities", "Choose", "*", 3, cols(), lines() - 4, 0)
+ : MyNcursesMenu(_("Modalities"), _("Press TAB to switch"), "*", 3, cols(), lines() - 4, 0)
 {
     itemList.reserve(9);
     itemList.push_back(new NCursesMenuItem(_("1. Browse")));

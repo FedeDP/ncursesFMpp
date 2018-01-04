@@ -1,4 +1,5 @@
 #include "ncursesui.hpp"
+#include "questiontab.hpp"
 
 NcursesUI::NcursesUI() : Module(STDIN_FILENO), NCursesApplication(false) {
     start_color();
@@ -19,6 +20,8 @@ NcursesUI::~NcursesUI() { }
 
 int NcursesUI::recv() {
     int ret = 0;
+    std::wstring answer;
+    std::wstring question = L"Is this a question?";
     
     int c = activeWin->getch();
     switch (c) {
@@ -35,6 +38,9 @@ int NcursesUI::recv() {
             break;
         case 27: /* ESC to exit */
             ret = -1;
+            break;
+        case '?':
+            QuestionTab::getInstance().askQuestion(question, answer);
             break;
         case KEY_LEFT: // left to switch tab only if we're not choosing modality
             if (activeWin != &modTab) {

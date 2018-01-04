@@ -3,7 +3,7 @@
 - [ ] Start porting config
 - [ ] start using gettext (FindGettext.cmake)
 - [ ] systab timerfd timer customizable
-- [ ] 1 cmdline option to set initial cwd
+- [x] 1 cmdline option to set initial cwd
 - [ ] Colors like ls (prepare patch for ncurses)
 
 ## UI FIXES (NcursesTab)

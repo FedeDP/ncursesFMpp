@@ -8,11 +8,12 @@
 class NcursesFM
 {
 public:
-    NcursesFM();
-    ~NcursesFM();
-    void loop();
+    NcursesFM(int argc, char *argv[]);
+    int operator()(void);
 
 private:
+    void loop();
+    
     bool quit = false;
     std::vector<pollfd> fds;
     std::vector<std::unique_ptr<Module>> modules;

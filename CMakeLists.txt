@@ -35,4 +35,10 @@ target_link_libraries(ncursesfm++
 	${CMAKE_THREAD_LIBS_INIT}
 	stdc++fs)
 
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+    add_definitions(-DCONFIG_PATH="${CMAKE_CURRENT_SOURCE_DIR}/Extra/ncursesFM++.conf")
+else()
+    add_definitions(-DCONFIG_PATH="/etc/default/ncursesFM++.conf")
+endif()
+
 set_property(TARGET ncursesfm++ PROPERTY CXX_STANDARD 14)

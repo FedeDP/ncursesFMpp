@@ -4,12 +4,11 @@
 NcursesConfig::NcursesConfig() {
     try
     {
-        // FIXME!
-        cfg.readFile("/home/federico/Progetti/ncursesFM++/Extra/ncursesFM.conf");
+        cfg.readFile(CONFIG_PATH);
     }
     catch (const FileIOException &fioex)
     {
-        Log::getInstance().Error("I/O error while reading file.");
+        Log::getInstance().Error("I/O error while reading file");
         exit(EXIT_FAILURE);
     }
     catch (const ParseException &pex)

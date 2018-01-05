@@ -4,11 +4,10 @@
 #include <experimental/filesystem>
 
 NcursesFM::NcursesFM(int argc, char *argv[]) {
-    if (argc > 1) {
-        try {
-            std::experimental::filesystem::current_path(argv[1]);
-        } catch (std::experimental::filesystem::filesystem_error &err) {
-            fprintf(stderr, "%s\n", err.what());
+    if (argc == 1 || !setStartingDir(argv[1])) {
+        std::string starting_dir = NcursesConfig::lookup("starting_directory", std::string());
+        if (!starting_dir.empty()) {
+            setStartingDir(starting_dir.c_str());
         }
     }
     
@@ -19,6 +18,17 @@ NcursesFM::NcursesFM(int argc, char *argv[]) {
     modules.push_back(std::make_unique<SysModule>());
     fgetch = { modules.back()->getFd(), POLLIN };
     fds.push_back(fgetch);
+}
+
+bool NcursesFM::setStartingDir(const char *cwd) const {
+    bool ret = true;
+    try {
+        std::experimental::filesystem::current_path(cwd);
+    } catch (std::experimental::filesystem::filesystem_error &err) {
+        fprintf(stderr, "%s\n", err.what());
+        ret = false;
+    }
+    return ret;
 }
 
 int NcursesFM::operator()(void) {

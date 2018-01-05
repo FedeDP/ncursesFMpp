@@ -17,20 +17,21 @@ add_executable(ncursesfm++ main.cpp ${SOURCES})
 
 find_package(PkgConfig REQUIRED)
 find_package(Threads)
-
 set(CURSES_NEED_NCURSES TRUE)
 find_package(Ncursesw REQUIRED)
-
 find_package(Udev REQUIRED)
+find_package(libconfig++ REQUIRED)
 
 target_include_directories(ncursesfm++
 	PRIVATE ${NCURSESW_INCLUDE_DIRS}
 	PRIVATE ${UDEV_INCLUDE_DIRS}
+	PRIVATE ${LIBCONFIG++_INCLUDE_DIRS}
 	PUBLIC include)
 
 target_link_libraries(ncursesfm++
 	${NCURSESW_LIBRARIES}
 	${UDEV_LIBRARIES}
+	${LIBCONFIG++_LIBRARIES}
 	${CMAKE_THREAD_LIBS_INIT}
 	stdc++fs)
 

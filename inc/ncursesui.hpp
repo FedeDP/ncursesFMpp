@@ -10,7 +10,6 @@ class NcursesUI : public Module, public NCursesApplication
 {
 public:
     NcursesUI();
-    ~NcursesUI();
     int recv();
     int run();
     

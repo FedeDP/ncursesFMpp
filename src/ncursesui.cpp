@@ -16,8 +16,6 @@ NcursesUI::NcursesUI() : Module(STDIN_FILENO), NCursesApplication(false) {
     NCursesApplication::operator()();
 }
 
-NcursesUI::~NcursesUI() { }
-
 int NcursesUI::recv() {
     int ret = 0;
     std::wstring answer;
@@ -72,7 +70,6 @@ int NcursesUI::recv() {
 
 int NcursesUI::run() {
     //     init_modalities(); // to be passed to tabs!
-    
     tabs.push_back(std::make_unique<NcursesTab>());
     tabs.push_back(std::make_unique<NcursesTab>(0, COLS / 2, false));
     

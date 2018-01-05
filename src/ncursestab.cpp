@@ -4,9 +4,10 @@
 using namespace std::experimental::filesystem;
 
 NcursesTab::NcursesTab(int starty, int startx, bool active)
- : MyNcursesMenu(current_path().string(), _("Browse"), "-> ", lines() - 4, cols() / 2, starty, startx, active)
+: MyNcursesMenu(current_path().string(), _("Browse"), NcursesConfig::lookup("fm_cursor_chars", std::string("-> ")), lines() - 4, cols() / 2, starty, startx, active)
 {    
     set_format(lines() - 2 - 4, 1); // 2 dimension of borders, 4 dimension of modtab win + syswin
+//     NcursesConfig::lookup("fm_cursor_chars", mark, std::string("-> "));
     getFileList();
     MyNcursesMenu::init();
     

@@ -17,6 +17,8 @@ public:
 private:
     QuestionTab();
 
+    QuestionTab(QuestionTab const&) = delete;
+    void operator=(QuestionTab const&) = delete;
 };
 
 #endif // QUESTIONTAB_H

@@ -9,7 +9,7 @@ public:
     Module() {};
     Module(int fd) { this->fd = fd; };
     ~Module() { close(fd); };
-    int getFd() { return fd; };
+    int getFd() const { return fd; };
     virtual int recv() = 0;
     
 protected:

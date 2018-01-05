@@ -1,10 +1,12 @@
 ## HIGH PRIORITY
 - [ ] Fixes in NcursesTab items
-- [ ] Start porting config
+- [x] Start porting config
 - [ ] start using gettext (FindGettext.cmake)
-- [ ] systab timerfd timer customizable
+- [x] systab timerfd timer customizable
 - [x] 1 cmdline option to set initial cwd
 - [ ] Colors like ls (prepare patch for ncurses)
+- [ ] fix valgrind issues
+- [ ] fix leaving with ESC
 
 ## UI FIXES (NcursesTab)
 - [x] Correctly print windows
@@ -26,6 +28,7 @@
 
 ## Modality class
 - [ ] Hashmap { pressedButton, Func }
+- [ ] Name() 
 
 ## Cmake
 - [ ] install needed files

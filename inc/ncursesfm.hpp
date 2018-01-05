@@ -12,7 +12,7 @@ public:
     int operator()(void);
 
 private:
-    void loop();
+    bool setStartingDir(const char *cwd) const;
     
     bool quit = false;
     std::vector<pollfd> fds;

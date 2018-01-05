@@ -14,6 +14,7 @@
 #include <vector>
 #include <cstring>
 #include <memory>
+#include <ncursesconfig.hpp>
 
 class Log 
 {
@@ -40,8 +41,7 @@ public:
 
 private:
     Log() {
-        // FIXME: load loglevel from conf
-        this->logLevel = DEBUG;
+        this->logLevel = NcursesConfig::lookup("loglevel", (int)DEBUG);
         
         struct passwd *pw = getpwuid(getuid());
         std::string homedir = pw->pw_dir;
@@ -57,8 +57,7 @@ private:
     void operator=(Log const&) = delete;
     
     template <typename... Args>
-    void logMessage(int level, char type, Args&&... args)
-    {
+    void logMessage(int level, char type, Args&&... args) {
         if (logFile.is_open() && level >= logLevel) {
             mtx.lock();
             auto t = std::time(nullptr);

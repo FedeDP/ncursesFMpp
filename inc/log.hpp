@@ -2,7 +2,7 @@
 #define LOG_H
 
 // gettext compliance
-#define _(str) (str)
+#define _(str) gettext(str)
 
 #include <mutex>
 #include <fstream>

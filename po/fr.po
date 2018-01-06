@@ -1,0 +1,438 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 3.0\n"
+"Report-Msgid-Bugs-To: <email>\n"
+"POT-Creation-Date: 2016-05-28 17:09+0200\n"
+"PO-Revision-Date: 2017-09-18 22:37+0100\n"
+"Last-Translator: Alain Aupeix <alain.aupeix@wanadoo.fr>\n"
+"Language-Team: ncursesFM\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# if you've got to switch format modifiers, see here:
+# http://www.gnu.org/software/gettext/manual/gettext.html#c_002dformat-Flag
+#, c-format
+msgid "%d files found searching %s:"
+msgstr "%d fichiers trouvés en cherchant %s:"
+
+# if you've got to switch format modifiers, see here:
+# http://www.gnu.org/software/gettext/manual/gettext.html#c_002dformat-Flag
+#, c-format
+msgid "%s mounted in: %s."
+msgstr "%s monté dans: %s"
+
+msgid "%s unmounted."
+msgstr "%s démonté."
+
+msgid "(un)mount current device."
+msgstr "(dé)monter le périphérique courant"
+
+msgid "A generic error occurred. Check log."
+msgstr "Une erreur générique est survenue. Vérifier le fichier journal"
+
+msgid "ARROW KEYS"
+msgstr ""
+
+msgid "Added to bookmarks!"
+msgstr "Ajouté aux signets!"
+
+msgid "Adding current file to bookmarks. Proceed? Y/n:> "
+msgstr "Ajout du fichier courant aux signets. Procéder? O/n:> "
+
+msgid "Archive is ready."
+msgstr "L'archive est prête."
+
+msgid "Archiving..."
+msgstr "Création de l'archive"
+
+msgid "Are you serious? y/N:> "
+msgstr "Êtes-vous sûr? o/N:> "
+
+msgid "At least 5 chars..."
+msgstr "Au moins 5 caractères..."
+
+msgid "Bookmark already present. Would you like to remove it? Y/n:> "
+msgstr "Signet déjà existant. Voulez-le supprimer? O/n:> "
+
+msgid "Bookmark was deleted as it was no more existent."
+msgstr "Signet supprimé, car le fichier n'existe plus."
+
+msgid "Bookmarks:"
+msgstr "Signets:"
+
+msgid "Could not archive."
+msgstr "Création impossible de l'archive."
+
+msgid "Could not extract every file."
+msgstr "Extraction de tous les fichiers impossible."
+
+msgid "Could not find /proc/mounts."
+msgstr "Impossible de trouver /proc/mounts."
+
+msgid "Could not install."
+msgstr "Installation impossible."
+
+msgid "Could not move"
+msgstr "Déplacement impossible"
+
+msgid "Could not open bookmarks file."
+msgstr "Ouverture du fichier des signets impossible."
+
+msgid "Could not paste."
+msgstr "Collage impossible."
+
+msgid "Could not remove every file."
+msgstr "Impossible de supprimer tous les fichiers."
+
+msgid "Current archive is encrypted. Enter a pwd:> "
+msgstr "L'archive courante est cryptée. Donnez le mot de passe:> "
+
+msgid ""
+"Currently there is no check against wrong package arch: it will crash "
+"packagekit and ncursesfm."
+msgstr ""
+
+msgid "Cutting..."
+msgstr "Découpe..."
+
+msgid "DEL"
+msgstr "SUPPR"
+
+msgid "Device removed."
+msgstr "Périphérique enlevé."
+
+msgid "Devices:"
+msgstr "Périphériques:"
+
+msgid "Dir created."
+msgstr "Dossier créé."
+
+msgid "Do you really want to extract this archive? Y/n:> "
+msgstr "Extraire les fichiers de cette archive? O/n:> "
+
+msgid "Do you really want to install this package? y/N:> "
+msgstr "Voulez-vous réellement installer ce paquet? o/N:> "
+
+msgid "Do you really want to print this file? Y/n:> "
+msgstr "Voulez-vous imprimer ce fichier? O/n:> "
+
+msgid "Do you want a lazy search (less precise but faster)? y/N:>"
+msgstr ""
+"Voulez vous d'une recherche paresseuse (moins précise, mais plus rapide)? o/"
+"N:>"
+
+msgid "Do you want to search in archives too? y/N:> "
+msgstr "Rechercher également dans les archives? o/N:> "
+
+msgid "ENTER"
+msgstr "ENTRÉE"
+
+msgid "Every file has been cut."
+msgstr "Tous les fichiers ont été coupés."
+
+msgid "Every file has been pasted."
+msgstr "Tous les fichiers ont été collés."
+
+msgid "Every file in this directory has been selected."
+msgstr "Tous les fichiers de ce répertoire ont été sélectionnés."
+
+msgid "Every file in this directory has been unselected."
+msgstr "Tous les fichiers de ce répertoire ont été désélectionnés."
+
+msgid "Every file in this directory has been unselected. Selected list empty."
+msgstr ""
+"Tous les fichiers de ce répertoire ont été sélectionnés. Liste de sélection "
+"vide."
+
+msgid "External tool has mounted %s."
+msgstr "Un outil externe a monté %s."
+
+msgid "External tool has unmounted %s."
+msgstr "Un outil externe a démonté %s."
+
+msgid "Extracting..."
+msgstr "Extraction"
+
+msgid "File created."
+msgstr "Fichier créé."
+
+msgid "File renamed."
+msgstr "Fichier renommé."
+
+msgid "File selected."
+msgstr "Fichier sélectionné."
+
+msgid "File unselected."
+msgstr "Fichier désélectionné."
+
+msgid "File unselected. Selected list empty."
+msgstr "Fichier désélectionné. Liste de sélection vide."
+
+msgid "File/dir removed."
+msgstr "Fichier/dossier supprimé."
+
+msgid "Files will be sorted alphabetically now."
+msgstr "Les fichiers seront triés par ordre alphabétique"
+
+msgid "Files will be sorted by last access now."
+msgstr "Les fichiers seront triés par ordre de dernier accès"
+
+msgid "Files will be sorted by size now."
+msgstr "Les fichiers seront triés par ordre de taille"
+
+msgid "Files will be sorted by type now."
+msgstr "Les fichiers seront triés par ordre de type"
+
+msgid "Insert filename to be found, at least 5 chars, max 20 chars.:> "
+msgstr "Saisissez le nom du fichier à chercher, de 5 à 20 caractères:> "
+
+msgid "Insert new file name (defaults to first entry name):> "
+msgstr "Saisissez le nouveau nom de fichier (par défaut, le nom actuel):> "
+
+msgid "Insert new name:> "
+msgstr "Saisissez le nouveau nom:> "
+
+msgid "Installed."
+msgstr "Installé."
+
+msgid "It seems current bookmark no longer exists. Remove it? Y/n:> "
+msgstr "Il semble que le signet courant n'existe plus. Le supprimer? O/n:> "
+
+msgid ""
+"It will eventually (un)mount your ISO files or install your distro "
+"downloaded packages."
+msgstr ""
+
+msgid "Just start typing your desired filename, to move right to its position."
+msgstr "Taper le nom du fichier cherché pour y accéder."
+
+msgid "List of selected files has been cleared."
+msgstr "La liste de sélection a été vidée"
+
+msgid "Monitor is not active. An error occurred, check log file."
+msgstr ""
+"Le moniteur n'est pas actif. Une erreur est survenue, vérifiez le fichier "
+"journal."
+
+msgid "New device connected."
+msgstr "Nouveau périphérique connecté."
+
+msgid "No bookmarks found."
+msgstr "Aucun signet trouvé."
+
+msgid "No devices found."
+msgstr "Aucun périphérique trouvé."
+
+msgid "No files found."
+msgstr "Aucun fichier trouvé."
+
+msgid "No power supply info available."
+msgstr "Aucune info sur l'alimentation disponible."
+
+msgid "No printers available."
+msgstr "Aucune imprimante disponible."
+
+msgid "On AC"
+msgstr "Au démarrage"
+
+msgid "PG_UP/DOWN"
+msgstr ""
+
+msgid "Pasting..."
+msgstr "Collage..."
+
+msgid "Press 'L' to trigger helper"
+msgstr "Appuyez sur 'L' pour voir/cacher l'aide"
+
+msgid "Print job added."
+msgstr "Travail d'impression ajouté."
+
+msgid "Queued jobs still running. Waiting..."
+msgstr "Queue des travaux en cours de traitement. Veuillez patienter..."
+
+msgid "Remember: every shortcut in ncursesFM is case insensitive."
+msgstr "Rappel: tous les raccourcis de nCursesFM sont sensibles à la casse"
+
+msgid "Removed from bookmarks!"
+msgstr "Supprimé des signets!"
+
+msgid "Removing current file from bookmarks. Proceed? Y/n:> "
+msgstr "Suppression du fichier courant des signets. Procéder? O/n:> "
+
+msgid "Removing..."
+msgstr "Suppression..."
+
+msgid "SPACE"
+msgstr ""
+
+msgid "Search finished. Press f anytime from normal mode to view the results."
+msgstr ""
+"Recherche terminée. Tapez f en mode normal pour afficher les résultats."
+
+msgid "Searching..."
+msgstr "Recherche en cours..."
+
+msgid "Selected files:"
+msgstr "Fichiers sélectionnés:"
+
+msgid "Still polling for devices."
+msgstr "Recherche des périphériques en cours."
+
+msgid "Succesfully extracted."
+msgstr "Extraction réussie."
+
+msgid "There are no selected files."
+msgstr "Aucun fichier sélectionné"
+
+msgid "There are selected files."
+msgstr "Il y a des fichiers sélectionnés."
+
+msgid "There's already a search in progress. Wait for it."
+msgstr "Recherche en cours actuellement. Veuillez patienter."
+
+msgid "There's already an active job. This job will be queued."
+msgstr "Il y a déjà quelque chose en cours. Ce travail sera mis dans la queue."
+
+msgid "Too many files found; try with a larger string."
+msgstr "Trop de fichiers trouvés; saisissez une chaîne plus longue."
+
+msgid "User bookmarks have been cleared."
+msgstr "Les signets utilisateur ont été supprimés"
+
+msgid "Waiting for package installation to finish..."
+msgstr "En attente de la fin de l'installation de ce paquet..."
+
+msgid "Window too small. Enlarge it."
+msgstr "Fenêtre trop petite. Agrandissez-la."
+
+msgid "You cannot remove xdg defined user dirs."
+msgstr "Vous ne pouvez pas supprimer le fichier de définition des dossiers xdg"
+
+msgid "You have to specify a valid editor in config file."
+msgstr ""
+"Vous devez spécifier un éditeur valide dans le fichier de configuration"
+
+msgid "add/remove current file to bookmarks."
+msgstr "ajout/suppression du fichier courant des signets"
+
+msgid ""
+"change sorting function: alphabetically (default), by size, by last modified "
+"or by type."
+msgstr ""
+"Trier : alphabétique (par défaut), taille, dernière modification ou type."
+
+msgid "check files fullname."
+msgstr ""
+
+msgid "close second tab."
+msgstr "fermer le second onglet"
+
+msgid "compress."
+msgstr "compresser."
+
+msgid "create new file/dir."
+msgstr "créer un nouveau fichier/dossier"
+
+msgid "create second tab."
+msgstr "créer un second onglet"
+
+msgid ""
+"enable fast browse mode: it lets you jump between files by just typing their "
+"name."
+msgstr ""
+
+msgid "extract."
+msgstr "extraire."
+
+msgid "jump straight to first/last file."
+msgstr "saute au premier/dernier élément."
+
+msgid "leave bookmarks mode."
+msgstr "quitter le mode signet."
+
+msgid "leave device mode."
+msgstr "quitter le mode périphérique."
+
+msgid "leave fast browse mode."
+msgstr "quitter le mode de navigation rapide."
+
+msgid "leave search mode."
+msgstr "quitter le mode recherche."
+
+msgid "leave selected mode."
+msgstr "quitter le mode sélectionné"
+
+msgid "move to current device mountpoint, mounting it if necessary."
+msgstr ""
+"passer au point de montage actuel de l'appareil, le monter si nécessaire."
+
+msgid "move to the folder/file selected."
+msgstr "passer au dossier/fichier sélectionné."
+
+msgid "n"
+msgstr ""
+
+msgid "paste/cut."
+msgstr "coller/couper"
+
+msgid "print."
+msgstr "imprimer."
+
+msgid "quit."
+msgstr "Quitter"
+
+msgid "remove all selected files."
+msgstr "supprimer tous les fichiers sélectionnés."
+
+msgid "remove all user bookmarks."
+msgstr "supprimer tous les signets utilisateurs"
+
+msgid "remove current file selection."
+msgstr "supprimer la sélection de fichiers en cours"
+
+msgid "remove selected file from bookmarks."
+msgstr "supprimer le fichier sélectionné des signets."
+
+msgid "remove."
+msgstr "supprimer."
+
+msgid "rename current file/dir."
+msgstr "renommer le fichier/dossier courant"
+
+msgid "search for a file."
+msgstr "chercher un fichier"
+
+msgid "see files stats."
+msgstr "affiche les statistiques des fichiers"
+
+msgid "select files. Once more to remove the file from selected files."
+msgstr "sélection/désélection des fichiers"
+
+msgid "surf between folders or to open files."
+msgstr "naviguer parmi les dossiers ou ouvrir les fichiers"
+
+msgid "switch between tabs."
+msgstr "changer d'onglet"
+
+msgid "switch to bookmarks mode."
+msgstr "basculer en mode signet"
+
+msgid "switch to device mode."
+msgstr "basculer en mode périphérique."
+
+msgid "switch to selected mode."
+msgstr "basculer vers le mode sélectionné."
+
+msgid "trigger the showing of hidden files."
+msgstr "voir/cacher les fichiers cachés."
+
+msgid "y"
+msgstr "o"

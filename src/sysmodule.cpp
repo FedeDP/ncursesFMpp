@@ -119,8 +119,8 @@ void SysModule::printBatt(int online, std::vector<int>& percs, int where) {
     switch (online) {
         case 1:
             /* ac connected */
-            x = checkSysinfoWhere(where, strlen(_("Connected to AC")));
-            sysTab.printw(0, x, "%.*s", COLS, _("Connected to AC"));
+            x = checkSysinfoWhere(where, strlen(_("On AC")));
+            sysTab.printw(0, x, "%.*s", COLS, _("On AC"));
             break;
         case 0:
             /* on battery */
@@ -154,8 +154,8 @@ void SysModule::printBatt(int online, std::vector<int>& percs, int where) {
             }
             break;
         default:
-            x = checkSysinfoWhere(where, strlen(_("AC error")));
-            sysTab.printw(0, x, "%.*s", COLS, _("AC error"));
+            x = checkSysinfoWhere(where, strlen(_("No power supply info available.")));
+            sysTab.printw(0, x, "%.*s", COLS, _("No power supply info available."));
             break;
     }
 }

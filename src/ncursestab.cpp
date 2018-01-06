@@ -38,6 +38,7 @@ void NcursesTab::getFileList() {
     
     // FIXME: why is this needed? Can't we directly use loop above?
     // ncurses prints weird things...
+    itemList.reserve(list.size() + 1);
     for (auto& s : list) {
         itemList.push_back(new NCursesMenuItem(s.c_str()));
     }

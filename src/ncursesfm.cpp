@@ -42,7 +42,7 @@ int NcursesFM::operator()(void) {
             quit = true;
         }
         
-        for (int i = 0; i < fds.size() && r > 0; i++) {
+        for (int i = 0; i < fds.size() && r > 0 && !quit; i++) {
             if (fds.at(i).revents & POLLIN) {
                 if (modules.at(i)->recv() == -1) {
                     quit = true;

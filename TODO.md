@@ -1,12 +1,12 @@
 ## HIGH PRIORITY
-- [ ] Fixes in NcursesTab items
+- [ ] Fixes in NcursesTab items (HIGH!!!)
 - [x] Start porting config
-- [ ] start using gettext (FindGettext.cmake)
+- [x] start using gettext (FindGettext.cmake)
 - [x] systab timerfd timer customizable
 - [x] 1 cmdline option to set initial cwd
 - [ ] Colors like ls (prepare patch for ncurses)
-- [ ] fix valgrind issues
-- [ ] fix leaving with ESC
+- [ ] fix valgrind issues -> lots of them are fixed by fixing NcursesTab...
+- [ ] fix leaving with ESC -> probably fixed by fixing NcursesTab
 
 ## UI FIXES (NcursesTab)
 - [x] Correctly print windows
@@ -31,5 +31,5 @@
 - [ ] Name() 
 
 ## Cmake
-- [ ] install needed files
-- [ ] create deb pkg! make package
+- [x] install needed files
+- [x] create deb pkg! make package

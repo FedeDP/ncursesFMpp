@@ -1,7 +1,7 @@
 #include "ncursesui.hpp"
 #include "questiontab.hpp"
 
-NcursesUI::NcursesUI() : Module(STDIN_FILENO), NCursesApplication(false) {
+NcursesUI::NcursesUI(bool hasSysLine) : Module(STDIN_FILENO) {
     start_color();
     use_default_colors();
     init_pair(1, COLOR_BLUE, -1);
@@ -10,10 +10,14 @@ NcursesUI::NcursesUI() : Module(STDIN_FILENO), NCursesApplication(false) {
     init_pair(4, COLOR_YELLOW, -1);
     init_pair(5, COLOR_RED, -1);
     ESCDELAY = 25;
-//     raw();
+    raw();
     
-    // start our NCursesApplication (create stdscr win etc etc)
-    NCursesApplication::operator()();
+    //     init_modalities(); // to be passed to tabs!
+    tabs.push_back(std::make_unique<NcursesTab>(hasSysLine));
+    tabs.push_back(std::make_unique<NcursesTab>(hasSysLine, 0, COLS / 2, false));
+    modTab = std::make_unique<NcursesModTab>(hasSysLine);
+    
+    activeWin = tabs.front().get();
 }
 
 int NcursesUI::recv() {
@@ -25,12 +29,12 @@ int NcursesUI::recv() {
     switch (c) {
         case 9: // tab to switch!
             activeWin->setActive(false);
-            if (activeWin == &modTab) {
+            if (activeWin == modTab.get()) {
                 activeWin = lastActive;
                 activeWin->setActive(true);
             } else {
                 lastActive = activeWin;
-                activeWin = &modTab;
+                activeWin = modTab.get();
                 activeWin->setActive(true);
             }
             break;
@@ -41,7 +45,7 @@ int NcursesUI::recv() {
             QuestionTab::getInstance().askQuestion(question, answer);
             break;
         case KEY_LEFT: // left to switch tab only if we're not choosing modality
-            if (activeWin != &modTab) {
+            if (activeWin != modTab.get()) {
                 if (activeWin != tabs.front().get()) {
                     activeWin->setActive(false);
                     activeWin = tabs.front().get();
@@ -51,7 +55,7 @@ int NcursesUI::recv() {
             }
             // DO not break so it will be redirected to default case
         case KEY_RIGHT: // right to switch tab only if we're not choosing modality
-            if (activeWin != &modTab) {
+            if (activeWin != modTab.get()) {
                 if (activeWin != tabs.back().get() && tabs.size() == 2) {
                     activeWin->setActive(false);
                     activeWin = tabs.back().get();
@@ -66,13 +70,4 @@ int NcursesUI::recv() {
     }
     activeWin->refresh();
     return ret;
-}
-
-int NcursesUI::run() {
-    //     init_modalities(); // to be passed to tabs!
-    tabs.push_back(std::make_unique<NcursesTab>());
-    tabs.push_back(std::make_unique<NcursesTab>(0, COLS / 2, false));
-    
-    activeWin = tabs.front().get();
-    return 0; 
 }

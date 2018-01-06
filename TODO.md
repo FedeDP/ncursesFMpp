@@ -3,7 +3,6 @@
 - [x] Start porting config
 - [x] start using gettext (FindGettext.cmake)
 - [x] systab timerfd timer customizable
-- [x] 1 cmdline option to set initial cwd
 - [ ] Colors like ls (prepare patch for ncurses)
 - [ ] fix valgrind issues -> lots of them are fixed by fixing NcursesTab...
 - [ ] fix leaving with ESC -> probably fixed by fixing NcursesTab
@@ -14,6 +13,10 @@
 - [x] QuestionWindow : NCursesWindow static class, window only shown when needed. It exposes a "askQuestion" method that will show it up and call wgetstr, returnsstring and hides itself.
 - [x] modTab label -> TAB to switch
 - [ ] tabs ->label: current modality
+
+## generic
+- [x] Do not create sysmodule (and syswin) if sysinfo_layout is empty
+- [x] NcursesFM is a NcursesApplication, not NcursesUI
 
 ## Module class
 - [ ] InotifyModule (each FmTab has one)
@@ -29,6 +32,7 @@
 ## Modality class
 - [ ] Hashmap { pressedButton, Func }
 - [ ] Name() 
+- [ ] Helper()
 
 ## Cmake
 - [x] install needed files

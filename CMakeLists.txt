@@ -10,7 +10,7 @@ set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 file(GLOB SOURCES src/*.cpp inc/*.hpp)
 
-add_executable(ncursesfm++ main.cpp ${SOURCES} Extra/ncursesFM++.conf)
+add_executable(ncursesfm++ ${SOURCES} Extra/ncursesFM++.conf)
 
 install (TARGETS ncursesfm++ DESTINATION bin)
 install(FILES Extra/ncursesFM++.conf DESTINATION etc/default COMPONENT config)

@@ -8,7 +8,7 @@
 class NcursesTab : public MyNcursesMenu
 {
 public:
-    NcursesTab(int starty = 0, int startx = 0, bool active = true);
+    NcursesTab(bool hasSysLine, int starty = 0, int startx = 0, bool active = true);
     int process(int c);
 
 private:

@@ -3,10 +3,10 @@
 
 #include <myncursesmenu.hpp>
 
-class NcursesModTab : public MyNcursesMenu
+class NcursesModTab : public MyNcursesMenu 
 {
 public:
-    NcursesModTab();
+    NcursesModTab(bool hasSysLine);
 };
 
 #endif // NCURSESMODTAB_H

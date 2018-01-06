@@ -4,15 +4,19 @@
 #include <poll.h>
 #include <memory>
 #include <module.hpp>
+#include <cursesapp.h>
 
-class NcursesFM
+class NcursesFM : public NCursesApplication 
 {
 public:
-    NcursesFM(int argc, char *argv[]);
-    int operator()(void);
+    NcursesFM();
+    int run();
 
 private:
     bool setStartingDir(const char *cwd) const;
+    void initLocale() const;
+    void initCwd(void) const;
+    void initModules();
     
     bool quit = false;
     std::vector<pollfd> fds;

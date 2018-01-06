@@ -46,5 +46,6 @@ void MyNcursesMenu::updateItems(std::string title) {
         setActive(active);
     }
     post();
+    refresh();
 }
 

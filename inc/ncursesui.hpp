@@ -4,18 +4,16 @@
 #include <ncursestab.hpp>
 #include <ncursesmodtab.hpp>
 #include <module.hpp>
-#include <cursesapp.h>
 
-class NcursesUI : public Module, public NCursesApplication 
+class NcursesUI : public Module
 {
 public:
-    NcursesUI();
+    NcursesUI(bool hasSysLine);
     int recv();
-    int run();
     
 private:
     std::vector<std::unique_ptr<NcursesTab>> tabs;
-    NcursesModTab modTab;
+    std::unique_ptr<NcursesModTab> modTab;
     MyNcursesMenu *activeWin, *lastActive; // last win active before changing modality
 
 };

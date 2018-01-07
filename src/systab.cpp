@@ -1,6 +1,6 @@
-#include "ncursessystab.hpp"
+#include "systab.hpp"
 
-NcursesSysTab::NcursesSysTab()
+SysTab::SysTab()
 : NCursesWindow(1, cols(), lines() - 1, 0)
 {
     curs_set(0);

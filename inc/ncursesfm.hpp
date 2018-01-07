@@ -11,11 +11,11 @@ class NcursesFM : public NCursesApplication
 public:
     NcursesFM();
     int run();
+    void handleArgs(int argc, char *argv[]) override;
 
 private:
     bool setStartingDir(const char *cwd) const;
     void initLocale() const;
-    void initCwd(void) const;
     void initModules();
     
     bool quit = false;

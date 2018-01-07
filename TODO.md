@@ -5,7 +5,7 @@
 - [x] systab timerfd timer customizable
 - [ ] Colors like ls (prepare patch for ncurses)
 - [ ] fix valgrind issues -> lots of them are fixed by fixing NcursesTab...
-- [ ] fix leaving with ESC -> probably fixed by fixing NcursesTab
+- [x] fix leaving with ESC
 
 ## UI FIXES (NcursesTab)
 - [x] Correctly print windows

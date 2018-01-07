@@ -5,12 +5,12 @@
 
 using namespace libconfig;
 
-class NcursesConfig
+class MyConfig
 {
 public:
     template <typename Arg>
     static Arg lookup(const char *option, Arg defaultValue) {
-        static NcursesConfig conf;
+        static MyConfig conf;
         try {
             return conf.cfg.lookup(option);
         } catch(const SettingNotFoundException &nfex) {
@@ -19,10 +19,10 @@ public:
     }
         
 private:
-    NcursesConfig();
+    MyConfig();
     
-    NcursesConfig(NcursesConfig const&) = delete;
-    void operator=(NcursesConfig const&) = delete;
+    MyConfig(MyConfig const&) = delete;
+    void operator=(MyConfig const&) = delete;
 
     Config cfg;
 };

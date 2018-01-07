@@ -1,27 +1,27 @@
-#include <ncursestab.hpp>
+#include <fmtab.hpp>
 #include <experimental/filesystem>
 
 using namespace std::experimental::filesystem;
 
-NcursesTab::NcursesTab(bool hasSysLine, int starty, int startx, bool active)
-: MyNcursesMenu(current_path().string(), _("Browse"), NcursesConfig::lookup("fm_cursor_chars", std::string("-> ")), lines() - 3 - hasSysLine, cols() / 2, starty, startx, active)
+FmTab::FmTab(bool hasSysLine, int starty, int startx, bool active)
+: MyMenu(current_path().string(), _("Browse"), MyConfig::lookup("fm_cursor_chars", std::string("-> ")), lines() - 3 - hasSysLine, cols() / 2, starty, startx, active)
 {    
+//     cwd = current_path();
     set_format(lines() - 2 - 4, 1); // 2 dimension of borders, 4 dimension of modtab win + syswin
     getFileList();
-    MyNcursesMenu::init();
-    
-    mapFunc.emplace(10,  std::bind(&NcursesTab::changeDir, this));
+    MyMenu::init();
+    mapFunc.emplace(10,  std::bind(&FmTab::changeDir, this));
 }
 
-int NcursesTab::process(int c) {
+int FmTab::process(int c) {
     try {
         return mapFunc.at(c)();
     } catch (const std::out_of_range& oor) {
-        return MyNcursesMenu::process(c);
+        return MyMenu::process(c);
     }
 }
 
-void NcursesTab::getFileList() {
+void FmTab::getFileList() {
     list.clear();
     itemList.clear();
     
@@ -44,7 +44,7 @@ void NcursesTab::getFileList() {
     itemList.push_back(new NCursesMenuItem());
 }
 
-int NcursesTab::changeDir() {
+int FmTab::changeDir() {
     if (is_directory(current_item()->name())) {
         current_path(current_item()->name());
         getFileList();

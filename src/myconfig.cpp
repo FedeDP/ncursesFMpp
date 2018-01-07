@@ -1,7 +1,7 @@
-#include "ncursesconfig.hpp"
+#include "myconfig.hpp"
 #include <log.hpp>
 
-NcursesConfig::NcursesConfig() {
+MyConfig::MyConfig() {
     try
     {
         cfg.readFile(CONFIG_PATH);

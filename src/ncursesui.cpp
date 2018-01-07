@@ -13,9 +13,9 @@ NcursesUI::NcursesUI(bool hasSysLine) : Module(STDIN_FILENO) {
     raw();
     
     //     init_modalities(); // to be passed to tabs!
-    tabs.push_back(std::make_unique<NcursesTab>(hasSysLine));
-    tabs.push_back(std::make_unique<NcursesTab>(hasSysLine, 0, COLS / 2, false));
-    modTab = std::make_unique<NcursesModTab>(hasSysLine);
+    tabs.push_back(std::make_unique<FmTab>(hasSysLine));
+    tabs.push_back(std::make_unique<FmTab>(hasSysLine, 0, COLS / 2, false));
+    modTab = std::make_unique<ModTab>(hasSysLine);
     
     activeWin = tabs.front().get();
 }

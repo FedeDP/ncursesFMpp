@@ -14,7 +14,7 @@
 #include <vector>
 #include <cstring>
 #include <memory>
-#include <ncursesconfig.hpp>
+#include <myconfig.hpp>
 
 class Log 
 {
@@ -41,7 +41,7 @@ public:
 
 private:
     Log() {
-        this->logLevel = NcursesConfig::lookup("loglevel", (int)DEBUG);
+        this->logLevel = MyConfig::lookup("loglevel", (int)DEBUG);
         
         struct passwd *pw = getpwuid(getuid());
         std::string homedir = pw->pw_dir;

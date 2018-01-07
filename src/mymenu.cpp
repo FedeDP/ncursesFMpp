@@ -1,6 +1,6 @@
-#include "myncursesmenu.hpp"
+#include "mymenu.hpp"
 
-MyNcursesMenu::MyNcursesMenu(std::string title, std::string label, std::string mark,
+MyMenu::MyMenu(std::string title, std::string label, std::string mark,
                              int nlines, int ncols, int starty, int startx, bool active) 
  : NCursesMenu(nlines, ncols, starty, startx) {
     this->title = title;
@@ -9,7 +9,7 @@ MyNcursesMenu::MyNcursesMenu(std::string title, std::string label, std::string m
     this->active = active;
 }
 
-void MyNcursesMenu::init() {
+void MyMenu::init() {
     InitMenu(itemList.data(), TRUE, TRUE);
     
     setActive(active);
@@ -21,11 +21,11 @@ void MyNcursesMenu::init() {
     refresh();
 }
 
-int MyNcursesMenu::process(int c) {
+int MyMenu::process(int c) {
     return driver(NCursesMenu::virtualize(c));
 }
 
-void MyNcursesMenu::setActive(bool active) {
+void MyMenu::setActive(bool active) {
     this->active = active;
     if (active) {
         CUR_attron(COLOR_PAIR(3));
@@ -36,7 +36,7 @@ void MyNcursesMenu::setActive(bool active) {
     }
 }
 
-void MyNcursesMenu::updateItems(std::string title) {
+void MyMenu::updateItems(std::string title) {
     if (!title.empty()) {
         this->title = title;
     }

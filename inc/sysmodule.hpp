@@ -2,7 +2,7 @@
 #define SYSMODULE_H
 
 #include <module.hpp>
-#include <ncursessystab.hpp>
+#include <systab.hpp>
 #include <libudev.h>
 
 class SysModule : public Module 
@@ -10,7 +10,7 @@ class SysModule : public Module
 public:
     SysModule();
     ~SysModule();
-    int recv();
+    int recv() override;
     
 private:
     void updateTimeDate(int where);
@@ -20,7 +20,7 @@ private:
     void poll_batteries(void);
     void printBatt(int online, std::vector<int>& percs, int where);
     
-    NcursesSysTab sysTab;
+    SysTab sysTab;
     std::string sysinfoLayout;
     struct udev *udev;
     std::string acPath;

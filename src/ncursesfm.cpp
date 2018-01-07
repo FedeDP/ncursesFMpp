@@ -10,15 +10,7 @@
 static NcursesFM fm;
 
 NcursesFM::NcursesFM() : NCursesApplication(false) {
-    initCwd();
     initLocale();
-}
-
-void NcursesFM::initCwd() const {
-    std::string starting_dir = NcursesConfig::lookup("starting_directory", std::string());
-    if (!starting_dir.empty()) {
-        setStartingDir(starting_dir.c_str());
-    }
 }
 
 void NcursesFM::initLocale() const {
@@ -31,7 +23,7 @@ void NcursesFM::initLocale() const {
 }
 
 void NcursesFM::initModules() {
-    std::string sysLayout = NcursesConfig::lookup("sysinfo_layout", std::string("tsb"));
+    std::string sysLayout = MyConfig::lookup("sysinfo_layout", std::string("tsb"));
     
     /* Check that string is not empty and contains non-space chars */
     bool sysLayoutEmpy = std::all_of(sysLayout.begin(), sysLayout.end(), isspace);
@@ -57,6 +49,16 @@ bool NcursesFM::setStartingDir(const char *cwd) const {
     }
     return ret;
 }
+
+void NcursesFM::handleArgs(int argc, char *argv[]) {
+    if (argc == 1 || !setStartingDir(argv[1])) {
+        std::string starting_dir = MyConfig::lookup("starting_directory", std::string());
+        if (!starting_dir.empty()) {
+            setStartingDir(starting_dir.c_str());
+        }
+    }
+}
+
 
 int NcursesFM::run(void) {
     /* 

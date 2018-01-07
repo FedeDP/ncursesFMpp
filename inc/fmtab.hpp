@@ -1,15 +1,15 @@
 #ifndef NCURSESTAB_H
 #define NCURSESTAB_H
 
-#include <myncursesmenu.hpp>
+#include <mymenu.hpp>
 #include <unordered_map>
 #include <functional>
 
-class NcursesTab : public MyNcursesMenu
+class FmTab : public MyMenu
 {
 public:
-    NcursesTab(bool hasSysLine, int starty = 0, int startx = 0, bool active = true);
-    int process(int c);
+    FmTab(bool hasSysLine, int starty = 0, int startx = 0, bool active = true);
+    int process(int c) override;
 
 private:
     void getFileList();
@@ -17,6 +17,7 @@ private:
     
     std::vector<std::string> list;
     std::unordered_map<int, std::function<int(void)>> mapFunc;
+    std::string cwd;
 //     std::vector<Modality> &Mod;
 //     Modality *currentMod;
 };

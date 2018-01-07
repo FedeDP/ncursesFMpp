@@ -5,7 +5,7 @@
 #include <sstream>
 
 // "time, sys, battery" by default
-SysModule::SysModule() : sysinfoLayout(NcursesConfig::lookup("sysinfo_layout", std::string("tsb"))) {
+SysModule::SysModule() : sysinfoLayout(MyConfig::lookup("sysinfo_layout", std::string("tsb"))) {
     int timerfd = timerfd_create(CLOCK_MONOTONIC, 0);
     if (timerfd == -1) {
         Log::getInstance().Warn("Could not start timer.");
@@ -15,7 +15,7 @@ SysModule::SysModule() : sysinfoLayout(NcursesConfig::lookup("sysinfo_layout", s
         poll_batteries();
         timerValue.it_value.tv_sec = 0;
         timerValue.it_value.tv_nsec = 1;
-        timerValue.it_interval.tv_sec = NcursesConfig::lookup("sysinfo_timeout", 30);
+        timerValue.it_interval.tv_sec = MyConfig::lookup("sysinfo_timeout", 30);
         timerValue.it_interval.tv_nsec = 0;
         timerfd_settime(timerfd, 0, &timerValue, NULL);
         Log::getInstance().Debug("Started time/battery monitor.");
@@ -141,7 +141,7 @@ void SysModule::printBatt(int online, std::vector<int>& percs, int where) {
             }
             x = checkSysinfoWhere(where, len);
             i = 0;
-            lowLevel = NcursesConfig::lookup("batt_low_level", 15);
+            lowLevel = MyConfig::lookup("batt_low_level", 15);
             for (auto &s : battStr) {
                 if (percs.at(i) <= lowLevel) {
                     sysTab.CUR_attron(COLOR_PAIR(5));

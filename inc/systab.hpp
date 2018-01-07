@@ -4,10 +4,10 @@
 #include <cursesw.h>
 #include <log.hpp>
 
-class NcursesSysTab : public NCursesWindow
+class SysTab : public NCursesWindow
 {
 public:
-    NcursesSysTab();
+    SysTab();
 };
 
 #endif // NCURSESSYSTAB_H

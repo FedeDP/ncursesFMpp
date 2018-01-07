@@ -1,6 +1,6 @@
-#include "mymenu.hpp"
+#include "mytab.hpp"
 
-MyMenu::MyMenu(std::string title, std::string label, std::string mark,
+MyTab::MyTab(std::string title, std::string label, std::string mark,
                              int nlines, int ncols, int starty, int startx, bool active) 
  : NCursesMenu(nlines, ncols, starty, startx) {
     this->title = title;
@@ -9,7 +9,7 @@ MyMenu::MyMenu(std::string title, std::string label, std::string mark,
     this->active = active;
 }
 
-void MyMenu::init() {
+void MyTab::init() {
     InitMenu(itemList.data(), TRUE, TRUE);
     
     setActive(active);
@@ -21,11 +21,11 @@ void MyMenu::init() {
     refresh();
 }
 
-int MyMenu::process(int c) {
+int MyTab::process(int c) {
     return driver(NCursesMenu::virtualize(c));
 }
 
-void MyMenu::setActive(bool active) {
+void MyTab::setActive(bool active) {
     this->active = active;
     if (active) {
         CUR_attron(COLOR_PAIR(3));
@@ -36,7 +36,7 @@ void MyMenu::setActive(bool active) {
     }
 }
 
-void MyMenu::updateItems(std::string title) {
+void MyTab::updateItems(std::string title) {
     if (!title.empty()) {
         this->title = title;
     }

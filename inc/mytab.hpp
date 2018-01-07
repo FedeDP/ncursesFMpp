@@ -4,10 +4,10 @@
 #include <cursesm.h>
 #include <log.hpp>
 
-class MyMenu : public NCursesMenu
+class MyTab : public NCursesMenu
 {
 public:
-    MyMenu(std::string title, std::string label, std::string mark,
+    MyTab(std::string title, std::string label, std::string mark,
                   int nlines, int ncols, int starty = 0, int startx = 0, bool active = false);
     void init();
     virtual int process(int c);

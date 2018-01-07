@@ -4,12 +4,12 @@
 using namespace std::experimental::filesystem;
 
 FmTab::FmTab(bool hasSysLine, int starty, int startx, bool active)
-: MyMenu(current_path().string(), _("Browse"), MyConfig::lookup("fm_cursor_chars", std::string("-> ")), lines() - 3 - hasSysLine, cols() / 2, starty, startx, active)
+: MyTab(current_path().string(), _("Browse"), MyConfig::lookup("fm_cursor_chars", std::string("-> ")), lines() - 3 - hasSysLine, cols() / 2, starty, startx, active)
 {    
 //     cwd = current_path();
     set_format(lines() - 2 - 4, 1); // 2 dimension of borders, 4 dimension of modtab win + syswin
     getFileList();
-    MyMenu::init();
+    MyTab::init();
     mapFunc.emplace(10,  std::bind(&FmTab::changeDir, this));
 }
 
@@ -17,7 +17,7 @@ int FmTab::process(int c) {
     try {
         return mapFunc.at(c)();
     } catch (const std::out_of_range& oor) {
-        return MyMenu::process(c);
+        return MyTab::process(c);
     }
 }
 
@@ -32,16 +32,16 @@ void FmTab::getFileList() {
         } catch (const std::out_of_range& oor) {
             str = p.path().filename().string();
         }
-        list.push_back(str);
+        list.emplace_back(str);
     }
     
     // FIXME: why is this needed? Can't we directly use loop above?
     // ncurses prints weird things...
     itemList.reserve(list.size() + 1);
     for (auto& s : list) {
-        itemList.push_back(new NCursesMenuItem(s.c_str()));
+        itemList.emplace_back(new NCursesMenuItem(s.c_str()));
     }
-    itemList.push_back(new NCursesMenuItem());
+    itemList.emplace_back(new NCursesMenuItem());
 }
 
 int FmTab::changeDir() {

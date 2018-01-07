@@ -1,9 +1,9 @@
 #ifndef NCURSESMODTAB_H
 #define NCURSESMODTAB_H
 
-#include <mymenu.hpp>
+#include <mytab.hpp>
 
-class ModTab : public MyMenu 
+class ModTab : public MyTab 
 {
 public:
     ModTab(bool hasSysLine);

@@ -1,7 +1,7 @@
 #include <modtab.hpp>
 
 ModTab::ModTab(bool hasSysLine)
- : MyMenu(_("Press TAB to switch modality"), "", "*", 3, cols(), lines() - 3 - hasSysLine, 0)
+ : MyTab(_("Press TAB to switch modality"), "", "*", 3, cols(), lines() - 3 - hasSysLine, 0)
 {
     itemList.reserve(8);
     itemList.push_back(new NCursesMenuItem(_("1. Browse")));
@@ -14,5 +14,5 @@ ModTab::ModTab(bool hasSysLine)
     itemList.push_back(new NCursesMenuItem());
 
     set_format(1, cols() - 2);
-    MyMenu::init();
+    MyTab::init();
 }

@@ -14,7 +14,7 @@ public:
 private:
     std::vector<std::unique_ptr<FmTab>> tabs;
     std::unique_ptr<ModTab> modTab;
-    MyMenu *activeWin, *lastActive; // last win active before changing modality
+    MyTab *activeWin, *lastActive; // last win active before changing modality
 
 };
 

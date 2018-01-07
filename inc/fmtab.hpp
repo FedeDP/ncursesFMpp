@@ -1,11 +1,11 @@
 #ifndef NCURSESTAB_H
 #define NCURSESTAB_H
 
-#include <mymenu.hpp>
+#include <mytab.hpp>
 #include <unordered_map>
 #include <functional>
 
-class FmTab : public MyMenu
+class FmTab : public MyTab
 {
 public:
     FmTab(bool hasSysLine, int starty = 0, int startx = 0, bool active = true);

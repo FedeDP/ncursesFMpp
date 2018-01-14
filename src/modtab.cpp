@@ -9,7 +9,7 @@ ModTab::ModTab(bool hasSysLine)
     itemList.push_back(new NCursesMenuItem(_("3. Places")));
     itemList.push_back(new NCursesMenuItem(_("4. Stats")));
     itemList.push_back(new NCursesMenuItem(_("5. Selected")));
-    itemList.push_back(new NCursesMenuItem(("6. Search")));
+    itemList.push_back(new NCursesMenuItem(_("6. Search")));
     itemList.push_back(new NCursesMenuItem(_("7. Notifications")));
     itemList.push_back(new NCursesMenuItem());
 

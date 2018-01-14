@@ -7,7 +7,7 @@ FmTab::FmTab(bool hasSysLine, int starty, int startx, bool active)
 : MyTab(current_path().string(), _("Browse"), MyConfig::lookup("fm_cursor_chars", std::string("-> ")), lines() - 3 - hasSysLine, cols() / 2, starty, startx, active)
 {    
 //     cwd = current_path();
-    set_format(lines() - 2 - 4, 1); // 2 dimension of borders, 4 dimension of modtab win + syswin
+    set_format(lines() - 2 - 3 - hasSysLine, 1); // 2 dimension of borders, 3 dimension of modtab win + 1 dimension of syswin if needed
     getFileList();
     MyTab::init();
     mapFunc.emplace(10,  std::bind(&FmTab::changeDir, this));

@@ -15,7 +15,7 @@ void MyTab::init() {
     setActive(active);
     set_mark(mark.c_str());
     curs_set(0);
-    
+    options_off(O_SHOWDESC);
     post();
     show();
     refresh();
